@@ -16,6 +16,18 @@ correct SELinux label (`gpu_device`). Setting SELinux permissive
 revives the GPU instantly (120 fps, GPU 31%) — so the policy, not
 the driver or the node, is at fault.
 
+
+## Before / after
+
+Before (llvmpipe software rendering — the overlay's GPU telemetry is
+itself partially denied, on top of the session running without GPU):
+
+![Before: GPU 0%, ~47 fps jitter, CPU 53%](before.jpg)
+
+After (this module, SELinux Enforcing — GPU identified and working):
+
+![After: GPU 31%, 120 fps, CPU 29%](after.jpg)
+
 ## Root cause
 
 Captured AVC denials (permissive mode) show **zero** denials against
@@ -68,4 +80,4 @@ reboot is not enough, sepolicy rules load at boot. Verify with
 
 ## Author & license
 
-Author: Muse · MIT License
+Made by Muse · MIT License

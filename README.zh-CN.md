@@ -15,6 +15,18 @@ ColorOS 移植版上 GPU 正常工作。GPU 设备节点 /dev/kgsl-3d0
 切到 permissive，GPU 立即复活（120 帧、GPU 31%）——问题在
 策略，不在驱动，也不在设备节点。
 
+
+## 修复前 / 修复后
+
+修复前（llvmpipe 软渲染——悬浮窗自己的 GPU 遥测读取也被拒了一半，
+会话本身更是没 GPU 在跑）：
+
+![修复前：GPU 0%、约 47 帧乱跳、CPU 53%](before.jpg)
+
+修复后（本模块生效、SELinux 保持 Enforcing——GPU 被正确识别并工作）：
+
+![修复后：GPU 31%、120 帧、CPU 29%](after.jpg)
+
 ## 根因
 
 permissive 模式下抓到的 AVC 拒绝日志显示：针对 GPU 设备节点
@@ -61,4 +73,4 @@ DroidDeck 悬浮窗 GPU 不再钉在 0。
 
 ## 作者与协议
 
-作者：Muse · MIT License
+制作者：Muse · MIT License

@@ -1,0 +1,4 @@
+allow untrusted_app_27 vendor_sysfs_kgsl file { read open getattr }
+allow untrusted_app_27 vendor_soc_model_prop file { read open getattr map }
+allow untrusted_app_27 vendor_default_prop file { read open getattr map }
+allow untrusted_app_27 sysfs dir { search }

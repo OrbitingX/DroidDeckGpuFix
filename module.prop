@@ -1,0 +1,6 @@
+id=droiddeck-gpu-fix
+name=DroidDeck GPU SELinux Fix
+version=1.0
+versionCode=1
+author=Muse
+description=Grants the app domain read access to KGSL sysfs and SoC/vendor property contexts that the HyperOS port policy silently denies, so DroidDeck's GPU probe succeeds and Turnip is used instead of llvmpipe.
